@@ -25,7 +25,14 @@ if __name__ == '__main__':
     dfparquet = spark.read.parquet(os.path.join(os.getenv("SPARK_HOME"), "examples/src/main/resources/users.parquet"))
     dfparquet.show()
     # we partition the table by favorite color, it will create a directory accordingly
-    dfparquet.write.partitionBy("favorite_color").format("parquet").save("namesPartByColor.parquet")
+    dfparquet.write.partitionBy("favorite_color").format("parquet").save("namesPartByColor.parquet", mode="overwrite")
+
+
+    # read json and save as parquet
+    print("write json as parquet file")
+    dfjson = spark.read.json(os.path.join(os.getenv("SPARK_HOME"), "examples/src/main/resources/people.json"))
+    dfjson.write.parquet("json_as_parquet", mode="overwrite", partitionBy="name")
+
 
 
 
