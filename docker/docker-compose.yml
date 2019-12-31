@@ -1,7 +1,7 @@
 version: "2.2"
 services:
   master:
-    image: gettyimages/spark:2.4.1-hadoop-3.0
+    build: .
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
     hostname: master
     environment:
@@ -26,7 +26,7 @@ services:
       - ./data:/tmp/data
 
   worker1:
-    image: gettyimages/spark:2.4.1-hadoop-3.0
+    build: .
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     hostname: worker1
     environment:
@@ -51,7 +51,7 @@ services:
       - ./data:/tmp/data
 
   worker2:
-    image: gettyimages/spark:2.4.1-hadoop-3.0
+    build: .
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     hostname: worker2
     environment:
