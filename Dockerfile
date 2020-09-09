@@ -1,5 +1,5 @@
 FROM debian:stretch
-MAINTAINER Getty Images "https://github.com/gettyimages"
+MAINTAINER Benjamin Wang (forked from Getty Images "https://github.com/gettyimages")
 
 RUN apt-get update \
  && apt-get install -y locales \
@@ -20,7 +20,7 @@ RUN apt-get update \
  && apt-get install -y curl unzip \
     python3 python3-setuptools \
  && ln -s /usr/bin/python3 /usr/bin/python \
- && easy_install3 pip py4j \
+ && apt-get install python-pip3 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
@@ -28,6 +28,9 @@ RUN apt-get update \
 ENV PYTHONHASHSEED 0
 ENV PYTHONIOENCODING UTF-8
 ENV PIP_DISABLE_PIP_VERSION_CHECK 1
+
+# python deps
+RUN pip3 install pyspark==2.4.4
 
 # JAVA
 RUN apt-get update \

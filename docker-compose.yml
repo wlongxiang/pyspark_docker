@@ -23,7 +23,7 @@ services:
       - 8080:8080
     volumes:
       - ./conf/master:/conf
-      - ./data:/tmp/data
+      - ./data:/data
 
   worker1:
     build: .
@@ -48,7 +48,7 @@ services:
      - 8081:8081
     volumes:
       - ./conf/worker:/conf
-      - ./data:/tmp/data
+      - ./data:/data
 
   worker2:
     build: .
@@ -73,4 +73,4 @@ services:
       - 8082:8081
     volumes:
       - ./conf/worker:/conf
-      - ./data:/tmp/data
+      - ./data:/data
