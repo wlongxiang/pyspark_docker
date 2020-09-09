@@ -14,3 +14,11 @@ Suppose you are already in docker master shell,
 
 - word count: `spark-submit /code/wordcount.py /data/logs.txt`
 
+
+## How to publish a new image (manually)
+
+- first you do `docker login` with your credentials to docker-hub
+- then `docker build -t wlongxiang/pyspark-2.4.4:<version_tag> .`, this command will build your email with name pyspark and tag with 2.4.4
+- verify your image is built successfully by `docker images`
+- finally `docker push wlongxiang/pyspark-2.4.4:<version_tag>`, in the end this will be available in your docker repo
+- now, everything should be able to run your image or use it in the docker-compose file, such as `docker run -it pyspark-2.4.4:<version_tag> bash`
