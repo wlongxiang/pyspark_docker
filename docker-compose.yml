@@ -24,6 +24,7 @@ services:
     volumes:
       - ./conf/master:/conf
       - ./data:/data
+      - ./code:/code
 
   worker1:
     build: .
@@ -49,7 +50,7 @@ services:
     volumes:
       - ./conf/worker:/conf
       - ./data:/data
-
+      - ./code:/code
   worker2:
     build: .
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
@@ -74,3 +75,4 @@ services:
     volumes:
       - ./conf/worker:/conf
       - ./data:/data
+      - ./code:/code
