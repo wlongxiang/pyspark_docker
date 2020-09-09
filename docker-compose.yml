@@ -1,7 +1,7 @@
 version: "2.2"
 services:
   master:
-    build: .
+    image: wlongxiang/pyspark-2.4.4:v0.0.1
     command: bin/spark-class org.apache.spark.deploy.master.Master -h master
     hostname: master
     environment:
@@ -27,7 +27,7 @@ services:
       - ./code:/code
 
   worker1:
-    build: .
+    image: wlongxiang/pyspark-2.4.4:v0.0.1
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     hostname: worker1
     environment:
@@ -52,7 +52,7 @@ services:
       - ./data:/data
       - ./code:/code
   worker2:
-    build: .
+    image: wlongxiang/pyspark-2.4.4:v0.0.1
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://master:7077
     hostname: worker2
     environment:
