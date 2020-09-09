@@ -1,7 +1,7 @@
 """
 This is a copy from official example src/examples/python
 How to use it:
-spark-submit /tmp/data/wordcount.py /tmp/data/logs.txt
+spark-submit /code/wordcount.py /data/logs.txt
 """
 
 import sys
@@ -25,6 +25,6 @@ if __name__ == "__main__":
         .reduceByKey(add)
     output = counts.collect()
     for (word, count) in output:
-        print("%s: %i" % (word, count))
+        print("%s: %i" % (word, count), file=sys.stdout)
 
     spark.stop()
