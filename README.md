@@ -1,6 +1,6 @@
 # Pyspark docker environment
 
-If you simply want to test a single note version just run `docker run -it wlongxiang/pyspark-2.4.4 pyspark`, this will bring you yo spark-shell.
+If you simply want to test a single node spark cluster, just run `docker run -it wlongxiang/pyspark-2.4.4 pyspark`, this will bring you yo spark-shell.
 
 Or you can also create a muti-worker cluster with a simple compose file, the example will mount the `data` and `code` local dir to the cluster worker and master such that you can easily change your code and data locally and test it within docker cluster.
 
